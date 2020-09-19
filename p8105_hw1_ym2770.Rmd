@@ -27,19 +27,29 @@ prob1_df =
 Take the mean of each variable in my data frame.
 
 ```{r}
+mean(pull(prob1_df, samp))
+mean(pull(prob1_df, samp_gt_0))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, factor_vec))
+```
+
+I can take the means of numbers and logical but not character or factor.
+
+```{r}
+
 as.numeric(pull(prob1_df, samp))
 as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
 ```
 
-I can take the means of numbers and logical but not character or factor.
+The logic vector is converted to numeric 0 and 1, the character vector is converted to NA for all elements, and the factor vector is converted to numeric. 
+It helps explain that R regards true as 1 and false as 0 automatically. And it shows that a factor vector can be converted to numeric, but a character vector cannot.
 
 ```{r}
-mean(pull(prob1_df, samp))
-mean(pull(prob1_df, samp_gt_0))
-mean(pull(prob1_df, char_vec))
-mean(pull(prob1_df, factor_vec))
+as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.factor(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * pull(prob1_df, samp)
 ```
 
 
