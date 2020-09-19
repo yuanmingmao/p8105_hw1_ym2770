@@ -1,60 +1,48 @@
 ---
 title: "p8105 Homework 1"
 author: Yuanming Mao
-date: September 2020
-output: _document
+output: github_document
 ---
 
-I'm an R Markdown document! 
-
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
+This is my solution to HW1.
 
 ```{r}
-samp = rnorm(100)
-length(samp)
-```
-
-# Section 2
-
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
-
-# Section 3
-#### Data frame and plot
-
-The code chunk below creates a data frame and generates a plot.
-```{r plot_example, message=FALSE}
 library(tidyverse)
-
-plot_df = tibble(
-  x = rnorm(500,mean = 2,sd = 4),
-  y = 3 - 4.2 * x + rnorm(500)
-)
-
-ggplot(plot_df, aes(x = x, y = y)) + geom_point()
-
 ```
 
-This plot is really great. It shows a linear relation just as expected.
+## Problem 1
 
-The data frame has `r nrow(plot_df)` rows.
+Creates a data frame with the specified elements.
 
-Here is a list:
+```{r}
+prob1_df = 
+  tibble(
+    samp = rnorm(10),
+    samp_gt_0 = samp > 0,
+    char_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+    factor_vec = factor(c("low", "low", "low", "mod", "mod","mod","mod", "high", "high", "high"))
+  )
+```
 
-* This is my first list item
-* lists need at least two items
-  * this list has a sub item
-* Third list item
+Take the mean of each variable in my data frame.
 
-##### Table
+```{r}
+as.numeric(pull(prob1_df, samp))
+as.numeric(pull(prob1_df, samp_gt_0))
+as.numeric(pull(prob1_df, char_vec))
+as.numeric(pull(prob1_df, factor_vec))
+```
 
-Col 1 | Col 2
------ | -----
-a     | b    
-c     | d
+I can take the means of numbers and logical but not character or factor.
 
-> This is a block quote.
+```{r}
+mean(pull(prob1_df, samp))
+mean(pull(prob1_df, samp_gt_0))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, factor_vec))
+```
+
+
+
+## Problem 2
 
