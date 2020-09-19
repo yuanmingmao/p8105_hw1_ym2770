@@ -60,8 +60,10 @@ data("penguins", package = "palmerpenguins")
 summary(penguins)
 ```
 
-This dataset includes data of location and physical physical features of 3 species of penguins. Important variables include species, island where the penguin is from, bill length and depth in mm, flipper length in mm, body mass in gram, sex, and year. 3 penguins species include Adelie, Chinstrap and Gentoo. 3 islands that these penguins are from include Biscoe, Dream, and Torgersen.
+This dataset includes data of location and physical physical features of 3 species of penguins. Important variables include species, island where the penguin is from, bill length and depth in mm, flipper length in mm, body mass in gram, sex, and year. Three penguins species include Adelie, Chinstrap and Gentoo. Three islands that these penguins are from include Biscoe, Dream, and Torgersen.
+
 This dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+
 The mean flipper length of those penguins is `r mean(pull(penguins,flipper_length_mm),na.rm=TRUE)` mm.
 
 ```{r}
